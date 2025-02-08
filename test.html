@@ -3,10 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My First HTML Page</title>
+    <title>Thank You</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        h1 {
+            color: #0f100f;
+        }
+    </style>
 </head>
 <body>
-    <h1>Survey</h1>
-    <p>This is my first HTML page.</p>
+    <h1>Thank You for Completing the Survey!</h1>
+    <p>Your response has been recorded.</p>
+    <script>
+        // 获取 URL 参数，例如 surveyID
+        function getQueryParam(param) {
+            var urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+       
+    </script>
 </body>
 </html>
+
