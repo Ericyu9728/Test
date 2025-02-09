@@ -3,30 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thank You</title>
+    <title>Survey Screening Notice</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             text-align: center;
             padding: 50px;
         }
-        h1 {
-            color: #0f100f;
+        #message {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        #countdown {
+            font-size: 22px;
+            font-weight: bold;
+            color: red;
         }
     </style>
 </head>
 <body>
-    <h1>Thank You for Completing the Survey!</h1>
-    <p>Your response has been recorded.</p>
+    <h2>Survey Screening Result</h2>
+    <p id="message">Sorry, your response did not meet the minimum word requirement, so you are not eligible to continue.</p>
+    <p>You will be redirected to Prolific in <span id="countdown">3</span> seconds.</p>
+
     <script>
-        // 获取 URL 参数，例如 surveyID
-        function getQueryParam(param) {
-            var urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get(param);
+        var countdown = 3;
+        var countdownElement = document.getElementById("countdown");
+
+        function updateCountdown() {
+            countdown -= 1;
+            countdownElement.textContent = countdown;
+
+            if (countdown <= 0) {
+                // Redirect to Prolific Screen Out URL
+                window.location.href = "https://app.prolific.co/submissions/complete?cc=SCREENOUT_CODE";
+            } else {
+                setTimeout(updateCountdown, 1000);
+            }
         }
 
-       
+        setTimeout(updateCountdown, 1000);
     </script>
 </body>
 </html>
-
